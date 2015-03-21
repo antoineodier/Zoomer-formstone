@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>Zoomer Demo</title>
+
+		<link href="http://formstone.it/css/demo.css" rel="stylesheet" type="text/css" media="all">
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+		<script src="http://formstone.it/js/demo.js"></script>
+
+
+		<link href="../jquery.fs.zoomer.css" rel="stylesheet" type="text/css" media="all">
+		<script src="../jquery.fs.zoomer.js"></script>
+
+		<style>
+			.zoomer_wrapper { border: 1px solid #ddd; border-radius: 3px; height: 500px; margin: 10px 0; overflow: hidden; width: 100%; }
+
+		</style>
+
+		<script>
+			$(document).ready(function() {
+				$(".zoomer_basic").zoomer();
+
+				$(".zoomer_custom").zoomer({
+					controls: {
+						zoomIn: ".zoomer_custom_zoom_in",
+						zoomOut: ".zoomer_custom_zoom_out"
+					},
+					customClass: "dark_zoomer",
+					increment: 0.03,
+					interval: 0.1,
+					marginMax: 50
+				});
+
+				$(".load_zoomer_tiled").one("click", function() {
+					$(this).after('<div class="zoomer_wrapper zoomer_tiled"></div>').remove();
+					$(".zoomer_tiled").zoomer({
+						source:{
+							thumbnail: "http://formstone.it/files/demo/space-tiled/tiled_thumbnail.jpg",
+							tiles: [
+								["http://formstone.it/files/demo/space-tiled/tiled_01.jpg", "http://formstone.it/files/demo/space-tiled/tiled_02.jpg", "http://formstone.it/files/demo/space-tiled/tiled_03.jpg", ],
+								["http://formstone.it/files/demo/space-tiled/tiled_04.jpg", "http://formstone.it/files/demo/space-tiled/tiled_05.jpg", "http://formstone.it/files/demo/space-tiled/tiled_06.jpg", ],
+								["http://formstone.it/files/demo/space-tiled/tiled_07.jpg", "http://formstone.it/files/demo/space-tiled/tiled_08.jpg", "http://formstone.it/files/demo/space-tiled/tiled_09.jpg", ],
+							]
+						}
+					});
+				});
+
+				$(window).on("resize", function(e) {
+					$(".zoomer_wrapper").zoomer("resize");
+				});
+			});
+		</script>
+	</head>
+	<body class="gridlock demo">
+		<article class="row page">
+			<div class="mobile-full tablet-full desktop-8 desktop-push-2">
+
+				<h5>Demo</h5>
+				<div class="zoomer_wrapper zoomer_basic">
+					<img src="maillefer-1r.jpg">
+				</div>
+
+			</div>
+		</article>
+
+	</body>
+</html>
